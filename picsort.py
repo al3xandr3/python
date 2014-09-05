@@ -6,6 +6,8 @@ import time
 from datetime import datetime
 import sys
 
+# reference: http://al3xandr3.github.io/picture-organizer.html
+
 def get_exif(path):
     ret = {}
     i = Image.open(path)
