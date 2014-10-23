@@ -4,19 +4,15 @@ import smtplib
 # http://docs.python.org/2/library/email-examples.html
 
 def mail(toaddrs, subj, msg, server, port, username, password):
-    message = """From: <USERNAME>
-To: <TOADDRS>
+    message = """From: From Person <from@fromdomain.com>
+To: To Person <to@todomain.com>
 MIME-Version: 1.0
-Content-type: text/html;
-  charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-type: text/html
 Subject: <SUBJ>
-
 <BODY>
 """
+
     # replace
-    message = message.replace("<USERNAME>", username)
-    message = message.replace("<TOADDRS>", toaddrs)
     message = message.replace("<SUBJ>", subj)
     message = message.replace("<BODY>", msg)
 
@@ -38,3 +34,5 @@ if __name__ == "__main__":
     fo = open(sys.argv[3], "rb")
     msg = fo.read()
     mail(sys.argv[1], sys.argv[2], msg, sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
+
+#> python livemail.py 'username@live.com' 'subj' 'file.html' 'smtp.live.com' '587' "username@live.com" "********"
