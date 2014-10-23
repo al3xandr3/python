@@ -1,11 +1,9 @@
 
-import statsmodels.api as sm
 import pandas as pd
 
 def relative_change(new, reference):
     return ((float(new) - float(reference)) / float(reference)) * 100
 
-# linear regression fit
 def linear_fit (data_ar):
     import statsmodels.api as sm
     import pandas as pd
@@ -13,9 +11,6 @@ def linear_fit (data_ar):
     X = pd.Series(range(1, len(ndt) + 1))
     y = ndt
     # ordinary least squares 
-    fit = sm.OLS(y,sm.add_constant(X)).fit().fittedvalues
-    return fit.values
-# linear_fit (['1,2,3,4,5'])
     fit = sm.OLS(y,sm.add_constant(X)).fit()
     return {'params': fit.params.values, 'fit_values': fit.fittedvalues.values}
 # linear_fit ([1,2,2,4,4,5])['params']

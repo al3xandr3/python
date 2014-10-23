@@ -8,12 +8,12 @@ def mail(toaddrs, subj, msg, server, port, username, password):
 To: <TOADDRS>
 MIME-Version: 1.0
 Content-type: text/html;
-charset=UTF-8
+  charset=UTF-8
 Content-Transfer-Encoding: 7bit
 Subject: <SUBJ>
+
 <BODY>
 """
-
     # replace
     message = message.replace("<USERNAME>", username)
     message = message.replace("<TOADDRS>", toaddrs)
