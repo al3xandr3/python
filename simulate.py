@@ -15,7 +15,7 @@ def iterations_ahead (current, iterations, delta_ar):
 
     current = [sample_add(current, iterations, delta_ar) for i in range(10000)]
     return np.mean(current)
-# predict_iterations_ahead(0, ['1', '2', '3', '7', '5'], 4)
+# print iterations_ahead(5, 1, ['1', '2', '3'])
 # pd.DataFrame(value).hist()
 
 
@@ -45,7 +45,15 @@ def iterations_to_value (current, target, delta_ar):
 
     value = [iter(current, target, delta_ar) for i in range(10000)]
     return np.mean(value)
-#iterations_to_value(70, 80, [-0.2]) # 0.0 = never
-#iterations_to_value(70, 80, [+0.2]) # 50
-#iterations_to_value(80, 70, [+0.2]) # 0.0 = never
-#iterations_to_value(80, 70, [-0.2]) # 50
+
+# How it should work
+def test_iterations_to_value():
+    iterations_to_value(70, 80, [-0.2]) == 0.0 # never
+    iterations_to_value(70, 80, [+0.2]) == 50
+    iterations_to_value(80, 70, [+0.2]) == 0.0 # never
+    iterations_to_value(80, 70, [-0.2]) == 50
+
+if __name__ == "__main__":
+    # run tests
+    from subprocess import call
+    call(["nosetests", "--verbose", __file__])
