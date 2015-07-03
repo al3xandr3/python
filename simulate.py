@@ -43,7 +43,7 @@ def iterations_to_value (current, target, delta_ar):
                 return 0  # if value too crazy just interrupt the loop
         return(iter)
 
-    value = [iter(current, target, delta_ar) for i in range(10000)]
+    value = [iter(current, target, delta_ar) for i in range(3000)]
     return np.mean(value)
 
 # How it should work

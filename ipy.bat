@@ -1,1 +1,1 @@
-ipython notebook --script
+ipython notebook 
