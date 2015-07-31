@@ -6,8 +6,8 @@ import time
 from datetime import datetime
 import sys
 
-
 # reference: http://al3xandr3.github.io/picture-organizer.html
+
 
 def get_exif(path):
     ret = {}
@@ -18,7 +18,8 @@ def get_exif(path):
         ret[decoded] = value
     return ret
 
-def picDate (path):
+
+def picdate (path):
     res = ""
     try:
         res = datetime.strptime(get_exif(path)['DateTimeOriginal'], "%Y:%m:%d %H:%M:%S") # 'DateTimeDigitized'
@@ -26,18 +27,20 @@ def picDate (path):
         res = ""
     return res
 
+
 def isPic (path):
     file, ext = os.path.splitext(path)
-    return (ext.upper() in [".JPG",".JPEG",".PNG",".NEF",".TIFF"])
+    return ext.upper() in [".JPG",".JPEG",".PNG",".NEF",".TIFF"]
+
 
 if __name__ == "__main__":
     import glob
     for file in glob.glob('*'):
         if isPic(file):
-            if picDate(file) != "":
-                dir = picDate(file).strftime("%Y-%m-%d")
+            if picdate(file) != "":
+                dir = picdate(file).strftime("%Y-%m-%d")
                 if not(os.path.exists(dir)):
-                    os.mkdir(picDate(file).strftime("%Y-%m-%d"))
+                    os.mkdir(picdate(file).strftime("%Y-%m-%d"))
                 os.rename(file, dir + '/' + file)
         else: 
             sys.exit("Place this in the folder with the images to sort, then: python picsort.py")
