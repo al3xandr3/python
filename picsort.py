@@ -42,5 +42,3 @@ if __name__ == "__main__":
                 if not(os.path.exists(dir)):
                     os.mkdir(picdate(file).strftime("%Y-%m-%d"))
                 os.rename(file, dir + '/' + file)
-        else: 
-            sys.exit("Place this in the folder with the images to sort, then: python picsort.py")
