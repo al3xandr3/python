@@ -22,8 +22,9 @@ def get_exif(path):
 def picdate (path):
     res = ""
     try:
-        res = datetime.strptime(get_exif(path)['DateTimeOriginal'], "%Y:%m:%d %H:%M:%S") # 'DateTimeDigitized'
-    except:
+        res = datetime.strptime(get_exif(path)['DateTimeOriginal'][0], "%Y:%m:%d %H:%M:%S") # 'DateTimeDigitized'
+    except Exception as ex:
+        print ex
         res = ""
     return res
 
@@ -35,10 +36,13 @@ def isPic (path):
 
 if __name__ == "__main__":
     import glob
-    for file in glob.glob('*'):
-        if isPic(file):
-            if picdate(file) != "":
-                dir = picdate(file).strftime("%Y-%m-%d")
-                if not(os.path.exists(dir)):
-                    os.mkdir(picdate(file).strftime("%Y-%m-%d"))
-                os.rename(file, dir + '/' + file)
+    try:
+        for file in glob.glob('*'):
+            if isPic(file):
+                if picdate(file) != "":
+                    dir = picdate(file).strftime("%Y-%m-%d")
+                    if not(os.path.exists(dir)):
+                        os.mkdir(picdate(file).strftime("%Y-%m-%d"))
+                    os.rename(file, dir + '/' + file)
+    except Exception as ex:
+        print ex
