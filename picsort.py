@@ -2,7 +2,7 @@
 from PIL import Image
 from PIL.ExifTags import TAGS
 import os
-import time
+# import time
 from datetime import datetime
 import sys
 
@@ -19,30 +19,36 @@ def get_exif(path):
     return ret
 
 
-def picdate (path):
+def picdate(path):
     res = ""
     try:
-        res = datetime.strptime(get_exif(path)['DateTimeOriginal'][0], "%Y:%m:%d %H:%M:%S") # 'DateTimeDigitized'
+        dt = get_exif(path)['DateTimeOriginal']
+
+        res = datetime.strptime(dt, "%Y:%m:%d %H:%M:%S")  # 'DateTimeDigitized'
     except Exception as ex:
         print ex
         res = ""
     return res
 
 
-def isPic (path):
+def isPic(path):
     file, ext = os.path.splitext(path)
-    return ext.upper() in [".JPG",".JPEG",".PNG",".NEF",".TIFF"]
+    return ext.upper() in [".JPG", ".JPEG", ".PNG", ".NEF", ".TIFF"]
 
 
 if __name__ == "__main__":
     import glob
+
+    target = sys.argv[1]
     try:
-        for file in glob.glob('*'):
+        for file in glob.glob(target + "\\*"):
             if isPic(file):
                 if picdate(file) != "":
                     dir = picdate(file).strftime("%Y-%m-%d")
                     if not(os.path.exists(dir)):
                         os.mkdir(picdate(file).strftime("%Y-%m-%d"))
-                    os.rename(file, dir + '/' + file)
+                    os.rename(file, dir + '\\' + os.path.basename(file))
     except Exception as ex:
+        print file
+        # print dir + '\\' + os.path.basename(file)
         print ex
