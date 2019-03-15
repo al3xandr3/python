@@ -8,7 +8,6 @@ import sys
 
 # reference: http://al3xandr3.github.io/picture-organizer.html
 
-
 def get_exif(path):
     ret = {}
     i = Image.open(path)
@@ -26,7 +25,7 @@ def picdate(path):
 
         res = datetime.strptime(dt, "%Y:%m:%d %H:%M:%S")  # 'DateTimeDigitized'
     except Exception as ex:
-        print ex
+        print(ex)
         res = ""
     return res
 
@@ -49,6 +48,6 @@ if __name__ == "__main__":
                         os.mkdir(picdate(file).strftime("%Y-%m-%d"))
                     os.rename(file, dir + '\\' + os.path.basename(file))
     except Exception as ex:
-        print file
+        print(file)
         # print dir + '\\' + os.path.basename(file)
-        print ex
+        print(ex)

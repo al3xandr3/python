@@ -11,7 +11,7 @@ background = Image.open(sys.argv[1])
 overlay = Image.open(sys.argv[2])
 
 background = background.convert("RGBA")
-overlay = overlay.convert("RGBA")
+overlay    = overlay.convert("RGBA")
 
 new_img = Image.blend(background, overlay, 0.5)
 new_img.save("blend.png","PNG")
