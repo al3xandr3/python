@@ -1,4 +1,4 @@
 
-cd %HOMEPATH%\Dropbox\my\projects\ipynb\
+cd %HOMEPATH%Google Drive\my\projects\ipynb\
 
 jupyter lab
