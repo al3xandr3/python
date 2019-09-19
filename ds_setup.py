@@ -1,6 +1,6 @@
 
 #import sys; import os; sys.path.append(os.path.expanduser('~/DropBox/my/projects/python/'))
-import sys; import os; sys.path.append(os.path.expanduser('~/DropBox/my/projects/T/'))
+import sys; import os; sys.path.append(os.path.expanduser('~/Google Drive/my/projects/T/'))
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -35,7 +35,7 @@ def set_plt_format():
 #    sns.set() # seaborn coloring
     sns.set(font='Segoe UI', rc={'figure.figsize':(11.7,6.27), 'font.size':11 \
                                 ,'axes.titlesize':18,'axes.labelsize':13 \
-                                ,'axes.titlepad': 20,'axes.labelpad': 10 })
+                                ,'axes.titlepad' : 20,'axes.labelpad': 10 })
     plt.margins(0.02)
     plt.subplots_adjust(bottom=0.1)
     #plt.subplots_adjust(top=0.1)
