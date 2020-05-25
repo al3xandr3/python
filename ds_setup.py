@@ -24,10 +24,6 @@ import warnings
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
 
-
-
-
-
 #import altair as alt
 #from vega_datasets import data
 #alt.data_transformers.enable('json')
